@@ -1,0 +1,53 @@
+﻿@model Food_Order_System.Models.Item
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Add New Item</h1>
+
+<h4>Item</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Item_Name" class="control-label"></label>
+                <input asp-for="Item_Name" class="form-control" />
+                <span asp-validation-for="Item_Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item_Price" class="control-label"></label>
+                <input asp-for="Item_Price" class="form-control" />
+                <span asp-validation-for="Item_Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item_image" class="control-label"></label>
+                <input asp-for="Pic_File" class="form-control" accept=".jpg,.jpge,.bmp,.png" />
+               @*  <input asp-for="Item_image" class="form-control" /> *@
+                <span asp-validation-for="Item_image" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Category_Name" class="control-label"></label>
+                @* <input asp-for="Category_ID" class="form-control" /> *@
+                <select asp-for="Category_ID" class="form-control" asp-items="@(new SelectList(ViewBag.CategoryList,"Category_ID","Category_Name"))">
+                    <option>Select a Category</option>
+                </select>
+                <span asp-validation-for="Category_ID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add New Item" class="btn btn-outline-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-outline-warning" >Back to Item List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

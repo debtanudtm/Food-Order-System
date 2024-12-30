@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Food_Order_System.Models.Category>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Category List</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-outline-primary">Add New Category</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Category_Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category_Name)
+            </td>
+            <td>
+                    <a asp-action="Edit" class="btn btn-outline-warning" asp-route-id="@item.Category_ID">Update</a>
+                    <a asp-action="Delete" class="btn btn-outline-danger" asp-route-id="@item.Category_ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<div class="alert-info">
+    @TempData["Message"]
+</div>
+

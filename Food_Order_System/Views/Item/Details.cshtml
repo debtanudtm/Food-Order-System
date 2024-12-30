@@ -1,0 +1,44 @@
+﻿@model Food_Order_System.Models.Item
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Item</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Item_Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Item_Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Item_Price)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Item_Price)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Item_image)
+        </dt>
+        <dd class = "col-sm-10">
+            @* @Html.DisplayFor(model => model.Item_image) *@
+            <img src="~/Picture/@Model.Item_image" height="100" width="100" class="squre" />
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Category_ID)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Category_ID)
+        </dd>
+    </dl>
+</div>
+<div>
+    @* <a asp-action="Edit" class="btn btn-outline-warning" asp-route-id="@Model?.Item_ID">Edit</a> | *@
+    <a asp-action="Index" class="btn btn-outline-info">Back to Item List</a>
+</div>
